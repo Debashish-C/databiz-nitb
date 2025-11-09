@@ -85,6 +85,7 @@ export default function EventsPage() {
      }>
   >([]);
 
+
   React.useEffect(() => {
     const fetchEvents = async () => {
       const response = await getEvents();

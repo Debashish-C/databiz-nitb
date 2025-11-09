@@ -100,6 +100,50 @@ const [events, setEvents] = React.useState<
           />
         </motion.section>
 
+         {/* 🎉 EVENTS SECTION */}
+        <motion.section
+          className="w-full py-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <div className="max-w-6xl mx-auto px-6">
+            <h1 className="text-3xl font-semibold text-gray-900 mb-10 text-center">
+              <span className="text-indigo-600 mr-2">•</span>Our Events
+            </h1>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+              {events.map((item, index) => (
+                <Link
+                  to={item.url}
+                  key={index}
+                  className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+                >
+                  <div className="relative w-full h-48 bg-gray-100">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <h2 className="font-semibold text-lg text-gray-900 group-hover:text-indigo-600 transition-colors">
+                      {item.title}
+                    </h2>
+                    <p className="text-sm text-gray-600 mt-2 line-clamp-3">
+                      {item.description}
+                    </p>
+                    <div className="mt-4 flex items-center text-indigo-600 text-sm font-medium group-hover:underline">
+                      View Details →
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </motion.section>
+
         {/* ℹ️ ABOUT SECTION */}
         <motion.section
           className="w-full flex sm:flex-row flex-col justify-between items-center gap-12"
@@ -165,49 +209,7 @@ const [events, setEvents] = React.useState<
           </div>
         </motion.section>
 
-        {/* 🎉 EVENTS SECTION */}
-        <motion.section
-          className="w-full py-12"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <div className="max-w-6xl mx-auto px-6">
-            <h1 className="text-3xl font-semibold text-gray-900 mb-10 text-center">
-              <span className="text-indigo-600 mr-2">•</span>Our Events
-            </h1>
-
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-              {events.map((item, index) => (
-                <Link
-                  to={item.url}
-                  key={index}
-                  className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
-                >
-                  <div className="relative w-full h-48 bg-gray-100">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="p-5">
-                    <h2 className="font-semibold text-lg text-gray-900 group-hover:text-indigo-600 transition-colors">
-                      {item.title}
-                    </h2>
-                    <p className="text-sm text-gray-600 mt-2 line-clamp-3">
-                      {item.description}
-                    </p>
-                    <div className="mt-4 flex items-center text-indigo-600 text-sm font-medium group-hover:underline">
-                      View Details →
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </motion.section>
+       
 
         {/* 🚀 JOIN SECTION */}
         <motion.section
