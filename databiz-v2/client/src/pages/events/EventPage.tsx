@@ -2,16 +2,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import {  MapPin } from "lucide-react";
-import { getEvents } from "../../services/event.service";
+// import { getEvents } from "../../services/event.service";
 
-// type Event = {
-//   id: string;
-//   title: string;
-//   date: string;
-//   location: string;
-//   description: string;
-//   image: string;
-// };
+type Event = {
+  id: string;
+  title: string;
+  date: string;
+  location: string;
+  description: string;
+  image: string;
+};
+
+
+const eventsData:  Event[] = [{
+  id: "data-brew-zomato",
+      title: "The Data Brew Show – Data Analyst at Zomato",
+      date: "15 Nov 2025, 4:30 PM",
+      location: "YouTube Live",
+      description:
+        "Join Ashutosh Sharma, Data Analyst at Zomato, as he shares insights on projects that got him hired, his career path, and his professional journey in data analytics.",
+      image: "/databrew-zomato.jpeg", // save the uploaded image as public/images/databrew-zomato.jpg
+    },
+];
 
 // const eventsData: Event[] = [
 //   {
@@ -71,37 +83,37 @@ import { getEvents } from "../../services/event.service";
 // ];
 
 export default function EventsPage() {
-  // const [events] = useState(eventsData);
+  const [events] = React.useState(eventsData);
 
 
-  const [events, setEvents] = React.useState<
-    Array<{ 
-      id: string;
-      title: string; 
-      date: string;
-      location: string;
-      description: string; 
-      image: string;
-     }>
-  >([]);
+  // const [events, setEvents] = React.useState<
+  //   Array<{ 
+  //     id: string;
+  //     title: string; 
+  //     date: string;
+  //     location: string;
+  //     description: string; 
+  //     image: string;
+  //    }>
+  // >([]);
 
 
-  React.useEffect(() => {
-    const fetchEvents = async () => {
-      const response = await getEvents();
-      console.log(response)
-      const eventsData = response.data;
+  // React.useEffect(() => {
+  //   const fetchEvents = async () => {
+  //     const response = await getEvents();
+  //     console.log(response)
+  //     const eventsData = response.data;
 
-      if (!eventsData || eventsData.length === 0) {
-        console.log("No events data found");
-      } else {
-        console.log("Events Data:", eventsData);
-        setEvents(eventsData);
-      }
-    };
+  //     if (!eventsData || eventsData.length === 0) {
+  //       console.log("No events data found");
+  //     } else {
+  //       console.log("Events Data:", eventsData);
+  //       setEvents(eventsData);
+  //     }
+  //   };
 
-    fetchEvents();
-  }, []);
+  //   fetchEvents();
+  // }, []);
 
   return (
     <div className="min-h-screen w-full flex flex-col justify-center items-center bg-gradient-to-b from-[#eef2ff] to-white py-16 px-6 lg:px-20">
@@ -117,7 +129,7 @@ export default function EventsPage() {
       </div>
 
       {/* Event Cards */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl w-full">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-5xl w-full">
         {events.map((event) => (
           <Link key={event.id} to={`/events/${event.id}`}>
             <div className="bg-white border border-indigo-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 rounded-2xl overflow-hidden cursor-pointer">

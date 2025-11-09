@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
           <p className="text-sm mb-4">Follow us on social media for updates and resources.</p>
           <div className="flex space-x-4">
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/databiz_nitb?igsh=MXZxcWlxYTBqc3Q1eQ=="
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition"
@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
               <FaInstagram size={20} />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/company/databiz-nitb/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition"

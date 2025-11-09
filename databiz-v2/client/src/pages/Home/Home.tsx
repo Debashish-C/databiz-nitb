@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+// import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -12,7 +12,7 @@ import {
   // Brain,
   // Lightbulb,
 } from "lucide-react";
-import { getEvents } from "../../services/event.service";
+// import { getEvents } from "../../services/event.service";
 
 const whatWeDo = [
   { title: "Workshops & Seminars", icon: <Mic2 size={36} className="text-indigo-600" /> },
@@ -21,7 +21,15 @@ const whatWeDo = [
   { title: "Guest Lectures & Webinars", icon: <Users size={36} className="text-indigo-600" /> },
 ];
 
-// const events = [
+const events = [{
+  id: "data-brew-zomato",
+      title: "The Data Brew Show – Data Analyst at Zomato",
+      date: "15 Nov 2025, 4:30 PM",
+      location: "YouTube Live",
+      description:
+        "Join Ashutosh Sharma, Data Analyst at Zomato, as he shares insights on projects that got him hired, his career path, and his professional journey in data analytics.",
+      image: "/databrew-zomato.jpeg", // save the uploaded image as public/images/databrew-zomato.jpg
+    },];
 //   {
 //     title: "Data Science Bootcamp",
 //     image: "/bootcamp.svg",
@@ -56,26 +64,26 @@ const whatWeDo = [
 
 export default function Home() {
 
-const [events, setEvents] = React.useState<
-    Array<{ title: string; image: string; description: string; url: string }>
-  >([]);
+// const [events, setEvents] = React.useState<
+//     Array<{ title: string; image: string; description: string; url: string }>
+//   >([]);
 
-  useEffect(() => {
-    const fetchEvents = async () => {
-      const response = await getEvents();
-      console.log(response)
-      const eventsData = response.data;
+//   useEffect(() => {
+//     const fetchEvents = async () => {
+//       const response = await getEvents();
+//       console.log(response)
+//       const eventsData = response.data;
 
-      if (!eventsData || eventsData.length === 0) {
-        console.log("No events data found");
-      } else {
-        console.log("Events Data:", eventsData);
-        setEvents(eventsData);
-      }
-    };
+//       if (!eventsData || eventsData.length === 0) {
+//         console.log("No events data found");
+//       } else {
+//         console.log("Events Data:", eventsData);
+//         setEvents(eventsData);
+//       }
+//     };
 
-    fetchEvents();
-  }, []);
+//     fetchEvents();
+//   }, []);
   return (
     <div className="w-full flex justify-center items-center bg-gradient-to-b from-white to-indigo-50">
       <div className="lg:max-w-5xl w-full py-12 px-6 flex flex-col gap-24 justify-center items-start">
@@ -116,7 +124,7 @@ const [events, setEvents] = React.useState<
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
               {events.map((item, index) => (
                 <Link
-                  to={item.url}
+                  to={item.id ? `/events/${item.id}` : "#"}
                   key={index}
                   className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
                 >
@@ -226,7 +234,7 @@ const [events, setEvents] = React.useState<
             Be a part of our journey — learn, build, and grow with the DataBiz
             community. Collaborate on impactful projects and upskill with peers.
           </p>
-          <Link to="/join">
+          <Link to="/">
             <button className="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 transition-all text-white font-semibold rounded-md shadow-md">
               Join Now
             </button>

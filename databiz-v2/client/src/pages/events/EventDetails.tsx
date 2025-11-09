@@ -3,28 +3,23 @@ import { Calendar, MapPin, ArrowLeft } from "lucide-react";
 
 const eventsData = [
   {
-    id: "data-quest-2025",
-    title: "DataQuest 2025 – Hack the Data",
-    date: "12 March 2025",
-    location: "MANIT Auditorium",
-    description:
-      "DataQuest 2025 brings together data enthusiasts for a 24-hour hackathon. Participants will work on real-world datasets, build predictive models, and visualize insights to solve challenging problems.",
-    image: "/images/dataquest.jpg",
+    id: "data-brew-zomato",
+    title: "The Data Brew Show – Data Analyst at Zomato",
+   date: "15 Nov 2025, 4:30 PM",
+    location: "YouTube Live",
+      description:[
+        "Join us for an engaging session with Mr Ashutosh Sharma, Data Analyst at Zomato and former Business Analyst at EXL, and a proud alumnus of MANIT as we explore the dynamic world of data-driven solutions, real business problem-solving, and actionable career insights drawn from his professional journey.",
+        "This session will cover:-",
+"👉The Winning Blueprint: How a data analyst turned strategy into success.",
+"👉The Career Compass: Charting your path in the world of analytics.",
+"👉The Analyst’s Odyssey:",
+" Lessons from a journey through data, decisions, and discovery."
+
+      ],
+    image: "/databrew-zomato.jpeg",
     resources: [
-      { type: "PDF", link: "/resources/dataquest-guide.pdf" },
-      { type: "YouTube", link: "https://youtu.be/sample" },
-    ],
-  },
-  {
-    id: "ai-summit",
-    title: "AI & Analytics Summit",
-    date: "5 April 2025",
-    location: "Innovation Hub",
-    description:
-      "The AI & Analytics Summit gathers experts, researchers, and students to explore innovations in artificial intelligence and data analytics.",
-    image: "/images/aisummit.jpg",
-    resources: [
-      { type: "YouTube", link: "https://youtu.be/sample2" },
+      { type: "WhatsApp Group For Details", link: "https://chat.whatsapp.com/LATcJyWekFgJKsMum6nxHo?mode=wwt" },
+      // { type: "YouTube", link: "https://youtu.be/sample" },
     ],
   },
 ];
@@ -74,9 +69,11 @@ export default function EventDetails() {
               <MapPin size={18} className="mr-2" /> {event.location}
             </div>
           </div>
-          <p className="text-gray-700 leading-relaxed mb-6">
-            {event.description}
-          </p>
+          {
+            event.description.map((val, ind) => 
+                <p className="text-gray-700 leading-relaxed mb-3" key={ind}>{val}</p>
+            )
+          }
 
           <h3 className="text-lg font-semibold text-gray-900 mb-3">
             Resources
